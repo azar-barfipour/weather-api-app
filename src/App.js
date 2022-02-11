@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     fectchData();
   }, []);
-  return <div>hii</div>;
+  return <div>Hi the main part will be goes here</div>;
 }
 
 export default App;
