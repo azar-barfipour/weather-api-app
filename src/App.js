@@ -5,33 +5,49 @@ import Location from "./pages/Location";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [data, setData] = useState([]);
-  const fectchData = async () => {
-    const res = await fetch(
-      "http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=7d5690407248ecb387de5b3061a477f5"
-    );
-    const data = await res.json();
-    console.log(data);
-    // let loadedData = [];
-    // for (const item in data) {
-    //   loadedData.push({
-    //     id: item[cod],
-    //     city: item[cod].city,
-    //   });
-    // }
-    setData(data.list);
-  };
+  const [lat, setLat] = useState();
+  const [long, setLong] = useState();
+  const [weatherData, setWeatherData] = useState();
 
   useEffect(() => {
-    fectchData();
-  }, []);
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setLat(position.coords.latitude);
+      setLong(position.coords.longitude);
+    });
+    console.log("Latitude is:", lat);
+    console.log("Longitude is:", long);
+    async function fetchWeatherData() {
+      try {
+        const res = await fetch(
+          `${process.env.REACT_APP_API_URL}/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`
+        );
+        if (!res.ok) {
+          throw new Error("something went wrong!!");
+        }
+        const data = await res.json();
+        // let loadedData = [];
+        // loadedData.push(data);
+        // console.log(loadedData);
+        setWeatherData(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    fetchWeatherData();
+  }, [lat, long]);
   return (
     <Layout>
-      <Routes>
-        <Route path="home" element={<Home data={data} />} />
+      {typeof weatherData != "undefined" ? (
+        <Home weatherData={weatherData} />
+      ) : (
+        <div></div>
+      )}
+      {/* <Routes>
+        <Route path="home" element={<Home />} />
         <Route path="/" element={<Navigate to="home" />} />
         <Route path="location" element={<Location />} />
-      </Routes>
+      </Routes> */}
     </Layout>
   );
 }
