@@ -1,0 +1,8 @@
+.main-weather_wrapper {
+  display: flex;
+  align-items: center;
+}
+.main-weather_item {
+  list-style: none;
+  margin-right: 0.5rem;
+}

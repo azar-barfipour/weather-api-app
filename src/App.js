@@ -5,8 +5,8 @@ import Location from "./pages/Location";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [lat, setLat] = useState();
-  const [long, setLong] = useState();
+  const [lat, setLat] = useState(49.2809128);
+  const [long, setLong] = useState(-122.9812382);
   const [weatherData, setWeatherData] = useState();
 
   useEffect(() => {
@@ -38,16 +38,20 @@ function App() {
   }, [lat, long]);
   return (
     <Layout>
-      {typeof weatherData != "undefined" ? (
-        <Home weatherData={weatherData} />
-      ) : (
-        <div></div>
-      )}
-      {/* <Routes>
-        <Route path="home" element={<Home />} />
+      <Routes>
+        <Route
+          path="home"
+          element={
+            typeof weatherData != "undefined" ? (
+              <Home weatherData={weatherData} />
+            ) : (
+              <div></div>
+            )
+          }
+        />
         <Route path="/" element={<Navigate to="home" />} />
         <Route path="location" element={<Location />} />
-      </Routes> */}
+      </Routes>
     </Layout>
   );
 }

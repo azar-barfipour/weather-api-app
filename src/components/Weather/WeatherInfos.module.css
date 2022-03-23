@@ -1,0 +1,30 @@
+.weather-wrapper {
+  width: 50%;
+  margin: 2rem auto;
+}
+.weather-rain {
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/002/016/241/original/rain-animation-with-clouds-free-video.jpg");
+  background-position: center;
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 100vh;
+}
+
+.weather-clouds {
+  background-image: url("https://img.freepik.com/free-vector/gorgeous-clouds-background-with-blue-sky-design_1017-25501.jpg");
+  background-position: center;
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 100vh;
+}
+.weather-sun {
+  background-image: url("https://thumbs.dreamstime.com/z/cartoon-sun-clouds-blue-sky-seamless-looping-video-animation-like-not-preset-43651463.jpg");
+  background-position: center;
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 100vh;
+}
+.weather_item {
+  list-style: none;
+  line-height: 2;
+}
