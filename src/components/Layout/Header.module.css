@@ -2,14 +2,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgb(45, 75, 90);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+.header__img {
+  padding: 0.5rem 1rem;
 }
 .header-list {
   display: flex;
 }
 .header__item {
   list-style: none;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 }
 .header__link {
   text-decoration: none;
+  color: #000;
+}
+.icon {
+  color: #fff;
 }

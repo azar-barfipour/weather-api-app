@@ -1,13 +1,14 @@
 .weather-wrapper {
   width: 50%;
-  margin: 2rem auto;
+  margin: 4rem auto;
+  padding: 1rem;
 }
 .weather-rain {
   background-image: url("https://static.vecteezy.com/system/resources/thumbnails/002/016/241/original/rain-animation-with-clouds-free-video.jpg");
   background-position: center;
   background-position: 50% 50%;
   background-size: cover;
-  height: 100vh;
+  height: 80vh;
 }
 
 .weather-clouds {
@@ -15,16 +16,28 @@
   background-position: center;
   background-position: 50% 50%;
   background-size: cover;
-  height: 100vh;
+  height: 80vh;
 }
 .weather-sun {
   background-image: url("https://thumbs.dreamstime.com/z/cartoon-sun-clouds-blue-sky-seamless-looping-video-animation-like-not-preset-43651463.jpg");
   background-position: center;
   background-position: 50% 50%;
   background-size: cover;
-  height: 100vh;
+  height: 80vh;
 }
 .weather_item {
   list-style: none;
-  line-height: 2;
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+}
+.weather_time {
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+}
+.weather_name {
+  margin-top: 2rem;
+}
+.weather_deg {
+  font-size: 2.5rem;
 }

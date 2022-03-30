@@ -1,6 +1,7 @@
 import WeatherInfos from "./WeatherInfos";
-const Weather = (props) => {
-  console.log(props.weatherData);
-  return <WeatherInfos weatherInfos={props.weatherData} />;
+import classes from "./Weather.module.css";
+
+const Weather = ({ weatherData }) => {
+  return <WeatherInfos weatherInfos={weatherData} />;
 };
 export default Weather;

@@ -1,8 +1,10 @@
 import Weather from "../components/Weather/Weather";
-const Home = (props) => {
+import classes from "../components/Weather/Weather.module.css";
+
+const Home = ({ weatherData }) => {
   return (
-    <div>
-      {props.weatherData && <Weather weatherData={props.weatherData} />}
+    <div className={classes["home-wrapper"]}>
+      {weatherData && <Weather weatherData={weatherData} />}
     </div>
   );
 };

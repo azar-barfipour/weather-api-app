@@ -2,6 +2,7 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import Map from "../components/Location/Map";
 import Search from "../components/Location/Search";
 import { withScriptjs, withGoogleMap } from "react-google-maps";
+import classes from "../components/Location/Location.module.css";
 // import { formatRelative } from "date-fns";
 
 const Location = () => {
@@ -69,7 +70,7 @@ const Location = () => {
 
   const WrappedMap = withScriptjs(withGoogleMap(Map));
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div className={classes["map-wrapper"]}>
       <Search panTo={panTo} />
       <WrappedMap
         onMapLoad={onMapLoad}

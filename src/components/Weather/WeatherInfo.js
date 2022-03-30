@@ -6,16 +6,15 @@ import {
 } from "react-icons/fa";
 import classes from "./WeatherInfo.module.css";
 
-const WeatherInfo = (props) => {
-  console.log(props.weather);
+const WeatherInfo = ({ weather }) => {
   return (
     <div className={classes["main-weather_wrapper"]}>
-      <li className={classes["main-weather_item"]}>{props.weather}</li>
-      {props.weather === "Rain" ||
-        (props.weather === "Drizzle" && <FaCloudRain />)}
-      {props.weather === "Clouds" && <FaCloud />}
-      {props.weather === "Snow" && <FaCloudShowersHeavy />}
-      {props.weather === "Sun" && <FaSun />}
+      <li className={classes["main-weather_item"]}>{weather}</li>
+      {weather === "Rain" ||
+        (weather === "Drizzle" && <FaCloudRain className={classes.icon} />)}
+      {weather === "Clouds" && <FaCloud className={classes.icon} />}
+      {weather === "Snow" && <FaCloudShowersHeavy className={classes.icon} />}
+      {weather === "Sun" && <FaSun className={classes.icon} />}
     </div>
   );
 };
