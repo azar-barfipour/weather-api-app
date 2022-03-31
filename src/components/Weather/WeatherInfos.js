@@ -29,6 +29,7 @@ const WeatherInfos = ({ weatherInfos }) => {
         <li className={`${classes["weather_item"]} ${classes["weather_deg"]}`}>
           {data.main.temp.toFixed(0)} &deg;
         </li>
+        {/* fix later */}
         <li className={classes["weather_item"]}>{data.main.max}</li>
         <li className={classes["weather_item"]}>{data.main.min}</li>
         <div>

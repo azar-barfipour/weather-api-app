@@ -1,40 +1,3 @@
-// import React from "react";
-// import { withScriptjs, withGoogleMap } from "react-google-maps";
-// import {
-//   GoogleMap,
-//   useLoadScript,
-//   Marker,
-//   InfoWindow,
-// } from "@react-google-maps/api";
-// // import { formatRelative } from "date-fns";
-// // const google = window.google;
-// // console.log(google);
-
-// const libraries = ["places"];
-// const mapContainerStyle = { width: "100vw", height: "100vh" };
-
-// const Map = ({ center }) => {
-//   const { isLoaded, loadError } = useLoadScript({
-//     googleMapsApiKey: "AIzaSyBSHjilPkBHUzdLmo7xyw2EEC2W8uigP_A",
-//     libraries,
-//   });
-//   if (isLoaded) return "loading";
-//   if (loadError) return "error";
-//   return (
-//     <div>
-//       <GoogleMap
-//         //   googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSHjilPkBHUzdLmo7xyw2EEC2W8uigP_A&v=3.exp&libraries=geometry,drawing,places"
-//         //   loadingElement={<div style={{ height: `100%` }} />}
-//         //   containerElement={<div style={{ height: `400px` }} />}
-//         //   mapElement={<div style={{ height: `100%` }} />}
-//         mapContainerStyle={mapContainerStyle}
-//         zoom={8}
-//         center={center}
-//       ></GoogleMap>
-//     </div>
-//   );
-// };
-
 import { GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import { useState } from "react";
 import MarkerLocation from "./MarkerLocation";
@@ -65,7 +28,12 @@ const Map = ({ center }) => {
         onClick={MarkerHandler}
       >
         {isEmptyMarkers ? (
-          <Marker position={center} />
+          <Marker
+            position={center}
+            onClick={() => {
+              // setSelected(center);
+            }}
+          />
         ) : (
           markers.map((marker, ind) => {
             return (
@@ -83,7 +51,7 @@ const Map = ({ center }) => {
           })
         )}
         {/* if mark a position then show window on that position */}
-        {selected ? (
+        {selected && (
           <InfoWindow
             position={{
               lat: selected.lat,
@@ -95,15 +63,15 @@ const Map = ({ center }) => {
             }}
           >
             <div>
-              <h2>{weatherData && weatherData.main.temp}</h2>
-              <p>{weatherData && weatherData.name}</p>
+              <h2>{weatherData && weatherData.main.temp.toFixed(0)} &deg;</h2>
               {weatherData &&
                 weatherData.weather.map((wData) => {
                   return <p>{wData.main}</p>;
                 })}
+              <p>{weatherData && weatherData.name}</p>
             </div>
           </InfoWindow>
-        ) : null}
+        )}
       </GoogleMap>
       {markers &&
         markers.map((marker) => {
