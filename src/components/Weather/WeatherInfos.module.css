@@ -1,33 +1,38 @@
 .weather-wrapper {
-  width: 50%;
-  margin: 4rem auto;
-  padding: 1rem;
+  background-color: #fff;
+  background-image: url("https://www.animatedimages.org/templates/gifstheme/assets/images/signature-header.png");
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: auto;
 }
-.weather-rain {
-  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/002/016/241/original/rain-animation-with-clouds-free-video.jpg");
-  background-position: center;
-  background-position: 50% 50%;
-  background-size: cover;
-  height: 80vh;
+.weather {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+}
+.weather-content {
+  backdrop-filter: blur(30px);
+  max-width: 400px;
+  position: relative;
+  left: -50%;
+  top: -50%;
+  padding: 5rem;
+  border-radius: 5rem;
+  background-color: rgba(62, 135, 207, 0.4);
 }
 
+.weather-rain {
+  background-color: rgba(9, 109, 209, 0.4);
+}
 .weather-clouds {
-  background-image: url("https://img.freepik.com/free-vector/gorgeous-clouds-background-with-blue-sky-design_1017-25501.jpg");
-  background-position: center;
-  background-position: 50% 50%;
-  background-size: cover;
-  height: 80vh;
+  background-color: rgba(62, 135, 207, 0.4);
 }
 .weather-sun {
-  background-image: url("https://thumbs.dreamstime.com/z/cartoon-sun-clouds-blue-sky-seamless-looping-video-animation-like-not-preset-43651463.jpg");
-  background-position: center;
-  background-position: 50% 50%;
-  background-size: cover;
-  height: 80vh;
+  background-color: rgba(197, 183, 127, 0.4);
 }
 .weather_item {
   list-style: none;
-  color: #fff;
+  color: rgb(85, 83, 83);
   font-size: 2rem;
   text-align: center;
 }
@@ -35,9 +40,16 @@
   font-size: 0.8rem;
   margin-bottom: 2rem;
 }
+.weather_date {
+  font-size: 1rem;
+}
 .weather_name {
   margin-top: 2rem;
 }
 .weather_deg {
   font-size: 2.5rem;
+}
+.weather_min_max {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }

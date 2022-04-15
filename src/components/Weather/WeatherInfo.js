@@ -1,20 +1,18 @@
-import {
-  FaCloudRain,
-  FaCloud,
-  FaCloudShowersHeavy,
-  FaSun,
-} from "react-icons/fa";
 import classes from "./WeatherInfo.module.css";
+import { ReactComponent as CloudSvg } from "../Icons/cloud.svg";
+import { ReactComponent as RainSvg } from "../Icons/rain.svg";
+import { ReactComponent as SunSvg } from "../Icons/sun.svg";
+import { ReactComponent as SnowSvg } from "../Icons/snow.svg";
 
 const WeatherInfo = ({ weather }) => {
   return (
     <div className={classes["main-weather_wrapper"]}>
       <li className={classes["main-weather_item"]}>{weather}</li>
-      {weather === "Rain" ||
-        (weather === "Drizzle" && <FaCloudRain className={classes.icon} />)}
-      {weather === "Clouds" && <FaCloud className={classes.icon} />}
-      {weather === "Snow" && <FaCloudShowersHeavy className={classes.icon} />}
-      {weather === "Sun" && <FaSun className={classes.icon} />}
+      {weather === "Rain" || (weather === "Drizzle" && <RainSvg />)}
+      {weather === "Clouds" && <CloudSvg />}
+      {weather === "Snow" && <SnowSvg />}
+      {weather === "Sun" && <SunSvg />}
+      {weather === "Clear" && <SunSvg />}
     </div>
   );
 };

@@ -1,6 +1,10 @@
 import { GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import { useState } from "react";
 import MarkerLocation from "./MarkerLocation";
+import { ReactComponent as CloudSvg } from "../Icons/cloud.svg";
+import { ReactComponent as RainSvg } from "../Icons/rain.svg";
+import { ReactComponent as SunSvg } from "../Icons/sun.svg";
+import { ReactComponent as SnowSvg } from "../Icons/snow.svg";
 
 const Map = ({ center }) => {
   const [markers, setMarkers] = useState([]);
@@ -67,6 +71,18 @@ const Map = ({ center }) => {
               {weatherData &&
                 weatherData.weather.map((wData) => {
                   return <p>{wData.main}</p>;
+                  {
+                    wData.main === "Clear" && <SunSvg />;
+                  }
+                  {
+                    wData.main === "Rain" && <RainSvg />;
+                  }
+                  {
+                    wData.main === "Clouds" && <CloudSvg />;
+                  }
+                  {
+                    wData.main === "Snow" && <SnowSvg />;
+                  }
                 })}
               <p>{weatherData && weatherData.name}</p>
             </div>
