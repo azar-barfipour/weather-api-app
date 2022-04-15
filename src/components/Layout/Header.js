@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 import classes from "./Header.module.css";
 import { FaHome, FaMapMarker } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+  const isActiveHome = location.pathname === "/home";
+  const isActiveLocation = location.pathname === "/location";
+
+  console.log(isActiveHome);
+  console.log(isActiveLocation);
   return (
     <div className={classes["header-wrapper"]}>
       <div>
@@ -16,12 +23,20 @@ const Header = () => {
       <ul className={classes["header-list"]}>
         <li className={classes["header__item"]}>
           <Link to="/home" className={classes["header__link"]}>
-            <FaHome className={classes.icon} />
+            <FaHome
+              className={`${classes["header__icon"]} ${
+                isActiveHome ? classes["header__active"] : ""
+              }`}
+            />
           </Link>
         </li>
         <li className={classes["header__item"]}>
           <Link to="/location" className={classes["header__link"]}>
-            <FaMapMarker className={classes.icon} />
+            <FaMapMarker
+              className={`${classes["header__icon"]} ${
+                isActiveLocation ? classes["header__active"] : ""
+              }`}
+            />
           </Link>
         </li>
       </ul>

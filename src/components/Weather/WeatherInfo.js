@@ -8,8 +8,9 @@ const WeatherInfo = ({ weather }) => {
   return (
     <div className={classes["main-weather_wrapper"]}>
       <li className={classes["main-weather_item"]}>{weather}</li>
-      {weather === "Rain" || (weather === "Drizzle" && <RainSvg />)}
-      {weather === "Clouds" && <CloudSvg />}
+      {weather === "Rain" ||
+        (weather === "Drizzle" && <RainSvg style={{ color: "red" }} />)}
+      {weather === "Clouds" && <CloudSvg style={{ color: "red" }} />}
       {weather === "Snow" && <SnowSvg />}
       {weather === "Sun" && <SunSvg />}
       {weather === "Clear" && <SunSvg />}

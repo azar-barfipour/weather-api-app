@@ -32,7 +32,8 @@
 }
 .weather_item {
   list-style: none;
-  color: rgb(85, 83, 83);
+  color: rgb(0, 30, 108);
+  /* color: rgb(85, 83, 83); */
   font-size: 2rem;
   text-align: center;
 }

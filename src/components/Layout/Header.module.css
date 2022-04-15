@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(48, 166, 231);
+  background-color: rgb(3, 83, 151);
   position: fixed;
   top: 0;
   left: 0;
@@ -20,8 +20,15 @@
 }
 .header__link {
   text-decoration: none;
-  color: #000;
-}
-.icon {
   color: #fff;
+}
+.header_icon {
+  color: #fff;
+}
+.header_icon:hover {
+  color: rgb(232, 99, 10);
+}
+.header__active {
+  color: rgb(232, 99, 10);
+  transform: scale(1.5);
 }
