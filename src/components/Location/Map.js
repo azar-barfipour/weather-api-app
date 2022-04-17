@@ -5,6 +5,7 @@ import { ReactComponent as CloudSvg } from "../Icons/cloud.svg";
 import { ReactComponent as RainSvg } from "../Icons/rain.svg";
 import { ReactComponent as SunSvg } from "../Icons/sun.svg";
 import { ReactComponent as SnowSvg } from "../Icons/snow.svg";
+import mapStyles from "./mapStyles";
 
 const Map = ({ center }) => {
   const [markers, setMarkers] = useState([]);
@@ -30,12 +31,16 @@ const Map = ({ center }) => {
         defaultCenter={center}
         // if marker is not empty create mark on the position
         onClick={MarkerHandler}
+        defaultOptions={{ styles: mapStyles }}
       >
         {isEmptyMarkers ? (
           <Marker
             position={center}
             onClick={() => {
               // setSelected(center);
+            }}
+            icon={{
+              url: "https://maps.google.com/mapfiles/ms/icons/orange.png",
             }}
           />
         ) : (
@@ -49,6 +54,9 @@ const Map = ({ center }) => {
                 }}
                 onClick={() => {
                   setSelected(marker);
+                }}
+                icon={{
+                  url: "https://maps.google.com/mapfiles/ms/icons/orange.png",
                 }}
               />
             );
@@ -67,24 +75,27 @@ const Map = ({ center }) => {
             }}
           >
             <div>
-              <h2>{weatherData && weatherData.main.temp.toFixed(0)} &deg;</h2>
-              {weatherData &&
-                weatherData.weather.map((wData) => {
-                  return <p>{wData.main}</p>;
-                  {
-                    wData.main === "Clear" && <SunSvg />;
-                  }
-                  {
-                    wData.main === "Rain" && <RainSvg />;
-                  }
-                  {
-                    wData.main === "Clouds" && <CloudSvg />;
-                  }
-                  {
-                    wData.main === "Snow" && <SnowSvg />;
-                  }
-                })}
-              <p>{weatherData && weatherData.name}</p>
+              <h3>{weatherData && weatherData.name}</h3>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <h2>{weatherData && weatherData.main.temp.toFixed(0)} &deg;</h2>
+                {weatherData &&
+                  weatherData.weather.map((wData) => {
+                    return (
+                      <p style={{ width: "50px" }}>
+                        {wData.main === "Clear" && <SunSvg />}
+                        {wData.main === "Rain" && <RainSvg />}
+                        {wData.main === "Clouds" && <CloudSvg />}
+                        {wData.main === "Snow" && <SnowSvg />}
+                      </p>
+                    );
+                  })}
+              </div>
             </div>
           </InfoWindow>
         )}
