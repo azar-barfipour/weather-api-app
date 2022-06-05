@@ -14,8 +14,6 @@ function App() {
       setLat(position.coords.latitude);
       setLong(position.coords.longitude);
     });
-    console.log("Latitude is:", lat);
-    console.log("Longitude is:", long);
     async function fetchWeatherData() {
       try {
         const res = await fetch(
@@ -25,7 +23,6 @@ function App() {
           throw new Error("something went wrong!!");
         }
         const data = await res.json();
-        console.log(data);
         setWeatherData(data);
       } catch (err) {
         console.log(err);

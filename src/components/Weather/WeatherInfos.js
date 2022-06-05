@@ -15,9 +15,9 @@ const WeatherInfos = ({ weatherInfos }) => {
   });
   const day = new Date().toLocaleString("en-us", { weekday: "short" });
   const month = new Date().toLocaleString("en-us", { month: "short" });
-  const dayNumber = new Date().getDay();
-
+  const dayNumber = new Date().toLocaleString("en-us", { day: "2-digit" });
   const date = `${day}, ${month} ${dayNumber}`;
+
   return (
     <div className={classes["weather-wrapper"]}>
       <div className={classes["weather"]}>
@@ -53,8 +53,7 @@ const WeatherInfos = ({ weatherInfos }) => {
               </li>
               <div>
                 {data.weather.map((item) => {
-                  console.log(item);
-                  return <WeatherInfo weather={item.main} />;
+                  return <WeatherInfo key={item.id} weather={item.main} />;
                 })}
               </div>
             </section>

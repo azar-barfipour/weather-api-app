@@ -8,8 +8,6 @@ const Header = () => {
   const isActiveHome = location.pathname === "/home";
   const isActiveLocation = location.pathname === "/location";
 
-  console.log(isActiveHome);
-  console.log(isActiveLocation);
   return (
     <div className={classes["header-wrapper"]}>
       <div>

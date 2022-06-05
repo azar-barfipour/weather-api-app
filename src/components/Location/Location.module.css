@@ -1,3 +1,12 @@
 .map-wrapper {
   margin-top: 4rem;
 }
+.modal {
+  z-index: 10;
+  position: absolute;
+  top: 5rem;
+  left: 0.5rem;
+  color: rgb(232, 99, 8);
+  font-size: 2rem;
+  font-weight: bold;
+}

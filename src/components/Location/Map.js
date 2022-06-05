@@ -1,5 +1,5 @@
 import { GoogleMap, Marker, InfoWindow } from "react-google-maps";
-import { useState } from "react";
+import { useState, useCallback, useRef } from "react";
 import MarkerLocation from "./MarkerLocation";
 import { ReactComponent as CloudSvg } from "../Icons/cloud.svg";
 import { ReactComponent as RainSvg } from "../Icons/rain.svg";
@@ -7,6 +7,11 @@ import { ReactComponent as SunSvg } from "../Icons/sun.svg";
 import { ReactComponent as SnowSvg } from "../Icons/snow.svg";
 import mapStyles from "./mapStyles";
 
+const optionMap = {
+  styles: mapStyles,
+  disableDefaultUI: true,
+  zoomControl: true,
+};
 const Map = ({ center }) => {
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState("");
@@ -21,24 +26,28 @@ const Map = ({ center }) => {
     ]);
   };
   const MarkerLocationHandler = (data) => {
+    console.log(data);
     setWeatherData(data);
   };
+  const mapRef = useRef();
+  const onMapLoad = useCallback((map) => {
+    mapRef.current = map;
+  }, []);
 
   return (
-    <>
+    <div>
       <GoogleMap
+        onLoad={onMapLoad}
         defaultZoom={8}
         defaultCenter={center}
         // if marker is not empty create mark on the position
         onClick={MarkerHandler}
-        defaultOptions={{ styles: mapStyles }}
+        defaultOptions={optionMap}
       >
         {isEmptyMarkers ? (
           <Marker
             position={center}
-            onClick={() => {
-              // setSelected(center);
-            }}
+            onClick={() => {}}
             icon={{
               url: "https://maps.google.com/mapfiles/ms/icons/orange.png",
             }}
@@ -101,16 +110,17 @@ const Map = ({ center }) => {
         )}
       </GoogleMap>
       {markers &&
-        markers.map((marker) => {
+        markers.map((marker, ind) => {
           return (
             <MarkerLocation
+              key={ind}
               lat={marker.lat}
               lng={marker.lng}
               onMarkerLocation={MarkerLocationHandler}
             />
           );
         })}
-    </>
+    </div>
   );
 };
 
