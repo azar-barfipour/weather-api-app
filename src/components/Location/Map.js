@@ -26,7 +26,6 @@ const Map = ({ center }) => {
     ]);
   };
   const MarkerLocationHandler = (data) => {
-    console.log(data);
     setWeatherData(data);
   };
   const mapRef = useRef();
