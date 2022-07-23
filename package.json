@@ -18,6 +18,8 @@
     "react-scripts": "5.0.0",
     "react-spring": "^9.4.4",
     "use-places-autocomplete": "^2.0.0",
+    "weather-icons-react": "^1.2.0",
+    "weather-styled-icon": "^3.3.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

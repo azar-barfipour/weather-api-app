@@ -1,19 +1,16 @@
 import classes from "./WeatherInfo.module.css";
-import { ReactComponent as CloudSvg } from "../Icons/cloud.svg";
-import { ReactComponent as RainSvg } from "../Icons/rain.svg";
-import { ReactComponent as SunSvg } from "../Icons/sun.svg";
-import { ReactComponent as SnowSvg } from "../Icons/snow.svg";
+import { Sunny, Cloudy, Rain, Snow } from "weather-styled-icon";
 
 const WeatherInfo = ({ weather }) => {
   return (
     <div className={classes["main-weather_wrapper"]}>
       <li className={classes["main-weather_item"]}>{weather}</li>
-      {weather === "Rain" && <RainSvg />}
-      {weather === "Drizzle" && <RainSvg />}
-      {weather === "Clouds" && <CloudSvg />}
-      {weather === "Snow" && <SnowSvg />}
-      {weather === "Sun" && <SunSvg />}
-      {weather === "Clear" && <SunSvg />}
+      {weather === "Rain" && <Rain />}
+      {weather === "Drizzle" && <Rain />}
+      {weather === "Clouds" && <Cloudy />}
+      {weather === "Snow" && <Snow />}
+      {weather === "Sun" && <Sunny />}
+      {weather === "Clear" && <Sunny />}
     </div>
   );
 };

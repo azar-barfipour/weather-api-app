@@ -1,16 +1,13 @@
 import { GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import { useState, useCallback, useRef } from "react";
 import MarkerLocation from "./MarkerLocation";
-import { ReactComponent as CloudSvg } from "../Icons/cloud.svg";
-import { ReactComponent as RainSvg } from "../Icons/rain.svg";
-import { ReactComponent as SunSvg } from "../Icons/sun.svg";
-import { ReactComponent as SnowSvg } from "../Icons/snow.svg";
+import { Sunny, Cloudy, Rain, Snow } from "weather-styled-icon";
 import mapStyles from "./mapStyles";
 
 const optionMap = {
   styles: mapStyles,
   disableDefaultUI: true,
-  zoomControl: true,
+  zoomControl: false,
 };
 const Map = ({ center }) => {
   const [markers, setMarkers] = useState([]);
@@ -37,7 +34,7 @@ const Map = ({ center }) => {
     <div>
       <GoogleMap
         onLoad={onMapLoad}
-        defaultZoom={8}
+        defaultZoom={7}
         defaultCenter={center}
         // if marker is not empty create mark on the position
         onClick={MarkerHandler}
@@ -77,7 +74,7 @@ const Map = ({ center }) => {
               lat: selected.lat,
               lng: selected.lng,
             }}
-            //   close the window
+            //close the window
             onCloseClick={() => {
               setSelected("");
             }}
@@ -93,13 +90,13 @@ const Map = ({ center }) => {
               >
                 <h2>{weatherData && weatherData.main.temp.toFixed(0)} &deg;</h2>
                 {weatherData &&
-                  weatherData.weather.map((wData) => {
+                  weatherData.weather.map((wData, ind) => {
                     return (
-                      <p style={{ width: "50px" }}>
-                        {wData.main === "Clear" && <SunSvg />}
-                        {wData.main === "Rain" && <RainSvg />}
-                        {wData.main === "Clouds" && <CloudSvg />}
-                        {wData.main === "Snow" && <SnowSvg />}
+                      <p>
+                        {wData.main === "Clear" && <Sunny key={ind} />}
+                        {wData.main === "Rain" && <Rain key={ind} />}
+                        {wData.main === "Clouds" && <Cloudy key={ind} />}
+                        {wData.main === "Snow" && <Snow key={ind} />}
                       </p>
                     );
                   })}
